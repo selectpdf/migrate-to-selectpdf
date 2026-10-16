@@ -155,6 +155,52 @@ Every pair passes the same `expect.json` checks (`python tools/check_guides.py f
   redaction, PDF/UA and ZUGFeRD ([Community Edition](https://selectpdf.com/community-edition/),
   [pricing](https://selectpdf.com/pricing/)).
 
+## Benchmark
+
+<!-- benchmark-pair: generated, do not edit -->
+
+IronPDF and SelectPdf on every axis of the [2026-10-15 benchmark run](https://github.com/csharp-pdf/pdf-libraries-compared/blob/main/benchmarks/2026-10-15.md), generated from its raw data (same machine, Windows and Linux; methodology, per-page numbers and every other library are on that page). Lower is better for times and memory, higher for throughput, checks and fidelity.
+
+|  | IronPDF | SelectPdf |
+|---|---|---|
+| HTML to PDF, geometric mean of 18 page medians, ms (Windows) | 186 | 212 |
+| Pages converted faster than the other library (Windows) | 14 of 18 | 4 of 18 |
+| Cold start, ms (Windows) | 657 | 714 |
+| Throughput, conversions/min, 1 / 4 / 8 at once, sync (Windows) | 480 / 1,485 / 1,735 | 353 / 948 / 1,078 |
+| Throughput, conversions/min, 1 / 4 / 8 at once, async (Windows) | 447 / 1,456 / 1,705 | 323 / 926 / 1,158 |
+| Memory, one page / 8 at once, MB (Windows) | 244 / 788 | 205 / 467 |
+| Memory over 1,000 conversions, MB (Windows) | 226 → 630, 0 failures | 140 → 156, 0 failures |
+| Page that never loads: gives up after, s (Windows) | 66 | 60 |
+| Parallel output equals sequential (Windows) | 32 / 32 | 32 / 32 |
+| HTML to PDF, geometric mean of 18 page medians, ms (Linux) | 169 | 134 |
+| Pages converted faster than the other library (Linux) | 4 of 18 | 14 of 18 |
+| Cold start, ms (Linux) | 1,090 | 745 |
+| Throughput, conversions/min, 1 / 4 / 8 at once, sync (Linux) | 453 / 1,332 / 1,520 | 619 / 1,929 / 2,597 |
+| Throughput, conversions/min, 1 / 4 / 8 at once, async (Linux) | 468 / 1,231 / 1,704 | 603 / 1,872 / 2,639 |
+| Memory, one page / 8 at once, MB (Linux) | 730 / 1,322 | 462 / 727 |
+| Memory over 1,000 conversions, MB (Linux) | 451 → 1,076, 0 failures | 369 → 389, 0 failures |
+| Page that never loads: gives up after, s (Linux) | 66 | 60 |
+| Parallel output equals sequential (Linux) | 31 / 32 | 32 / 32 |
+| Content checks passed (Windows) | 41 / 48 | 46 / 48 |
+| Content checks passed (Linux) | 41 / 48 | 46 / 48 |
+| Fidelity vs Chrome, mean SSIM (Windows) | 0.928 | 0.984 |
+| PDF/A, PDF/UA, PDF/X: levels produced / valid (of 17) | 14 / 5 | 17 / 17 |
+| Tagged structure checks | 42 / 112 | 112 / 112 |
+| Text extraction, lowest F1 | 0.96 | 0.97 |
+| Search | not supported | supported |
+| PDF to image | supported | supported |
+| Word to PDF | supported | supported |
+| Redaction | supported | supported |
+| Merge | supported | supported |
+| Split | supported | supported |
+| Watermark | supported | supported |
+| Digital signature | supported | supported |
+| Form filling | supported | supported |
+| ZUGFeRD / Factur-X | supported | supported |
+| Docker, minimal image (Linux) | runs as root only, 206 MB | runs, 270 MB |
+| Docker, vendor-documented image (Linux) | runs, 239 MB | not needed (the minimal image runs) |
+| Publish size win-x64 / linux-x64, MB | 321.3 / 314.6 | 477.0 / 449.6 |
+
 ## Deployment
 
 - **Windows.** Both libraries ship their engine as NuGet packages; nothing else is installed. SelectPdf needs one

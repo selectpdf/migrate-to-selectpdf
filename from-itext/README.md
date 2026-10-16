@@ -166,6 +166,52 @@ Every pair passes the same `expect.json` checks (`python tools/check_guides.py f
   PDF, redaction, PDF/UA and ZUGFeRD ([Community Edition](https://selectpdf.com/community-edition/),
   [pricing](https://selectpdf.com/pricing/)).
 
+## Benchmark
+
+<!-- benchmark-pair: generated, do not edit -->
+
+iText and SelectPdf on every axis of the [2026-10-15 benchmark run](https://github.com/csharp-pdf/pdf-libraries-compared/blob/main/benchmarks/2026-10-15.md), generated from its raw data (same machine, Windows and Linux; methodology, per-page numbers and every other library are on that page). Lower is better for times and memory, higher for throughput, checks and fidelity.
+
+|  | iText | SelectPdf |
+|---|---|---|
+| HTML to PDF, geometric mean of 18 page medians, ms (Windows) | 183 | 212 |
+| Pages converted faster than the other library (Windows) | 10 of 18 | 8 of 18 |
+| Cold start, ms (Windows) | 617 | 714 |
+| Throughput, conversions/min, 1 / 4 / 8 at once, sync (Windows) | 139 / 297 / 370 | 353 / 948 / 1,078 |
+| Throughput, conversions/min, 1 / 4 / 8 at once, async (Windows) | not supported | 323 / 926 / 1,158 |
+| Memory, one page / 8 at once, MB (Windows) | 172 / 645 | 205 / 467 |
+| Memory over 1,000 conversions, MB (Windows) | 172 → 161, 0 failures | 140 → 156, 0 failures |
+| Page that never loads: gives up after, s (Windows) | 100 | 60 |
+| Parallel output equals sequential (Windows) | 16 / 16 | 32 / 32 |
+| HTML to PDF, geometric mean of 18 page medians, ms (Linux) | 262 | 134 |
+| Pages converted faster than the other library (Linux) | 1 of 18 | 17 of 18 |
+| Cold start, ms (Linux) | 765 | 745 |
+| Throughput, conversions/min, 1 / 4 / 8 at once, sync (Linux) | 136 / 304 / 318 | 619 / 1,929 / 2,597 |
+| Throughput, conversions/min, 1 / 4 / 8 at once, async (Linux) | not supported | 603 / 1,872 / 2,639 |
+| Memory, one page / 8 at once, MB (Linux) | 250 / 722 | 462 / 727 |
+| Memory over 1,000 conversions, MB (Linux) | 221 → 227, 0 failures | 369 → 389, 0 failures |
+| Page that never loads: gives up after, s (Linux) | 100 | 60 |
+| Parallel output equals sequential (Linux) | 15 / 15 | 32 / 32 |
+| Content checks passed (Windows) | 39 / 48 | 46 / 48 |
+| Content checks passed (Linux) | 39 / 48 | 46 / 48 |
+| Fidelity vs Chrome, mean SSIM (Windows) | 0.782 | 0.984 |
+| PDF/A, PDF/UA, PDF/X: levels produced / valid (of 17) | 10 / 8 | 17 / 17 |
+| Tagged structure checks | 33 / 42 | 112 / 112 |
+| Text extraction, lowest F1 | 0.18 | 0.97 |
+| Search | supported | supported |
+| PDF to image | not supported | supported |
+| Word to PDF | not supported | supported |
+| Redaction | supported | supported |
+| Merge | supported | supported |
+| Split | supported | supported |
+| Watermark | supported | supported |
+| Digital signature | supported | supported |
+| Form filling | supported | supported |
+| ZUGFeRD / Factur-X | not supported | supported |
+| Docker, minimal image (Linux) | runs, 84 MB | runs, 270 MB |
+| Docker, vendor-documented image (Linux) | not needed (the minimal image runs) | not needed (the minimal image runs) |
+| Publish size win-x64 / linux-x64, MB | 17.9 / 17.8 | 477.0 / 449.6 |
+
 ## Deployment
 
 - **Windows.** iText needs only its NuGet packages. SelectPdf needs one Native package per build, chosen by

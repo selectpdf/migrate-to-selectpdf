@@ -36,16 +36,21 @@ the `before/` route — and both must pass the same `expect.json` checks.
 5. **What you can add** — tasks SelectPdf supports and the library does not, linked to SelectPdf's samples.
 6. **What does not carry over** — options without an equivalent, behaviour that differs (defaults, units,
    timeouts, page-number placeholders), and the workaround where there is one. Honest and specific.
-7. **Deployment** — Windows, Linux and Docker differences, linking both libraries' Docker samples in the
+7. **Benchmark** — the library and SelectPdf side by side on every axis of the latest benchmark run (speed,
+   throughput, memory, checks, fidelity, standards, tools, Docker), generated from the raw data by
+   [`analysis/pair_sections.py`](https://github.com/csharp-pdf/pdf-benchmarks/blob/main/analysis/pair_sections.py)
+   in pdf-benchmarks. The section is replaced on every run and never edited by hand.
+8. **Deployment** — Windows, Linux and Docker differences, linking both libraries' Docker samples in the
    comparison repository.
-8. **Licensing** — both licence models side by side, each linked to the vendor's page with the date read.
+9. **Licensing** — both licence models side by side, each linked to the vendor's page with the date read.
 
 ## Rules
 
 - **Factual and checkable.** Every statement about either library links its source (vendor docs, NuGet,
   the comparison repository's samples or benchmark data) or a project in this repository.
-- **No speed claims** against another library, and no "drop-in", "no code changes" or "just swap the package"
-  claims. Benchmark numbers are linked, not quoted selectively.
+- **No speed claims** against another library in the text, and no "drop-in", "no code changes" or "just swap the
+  package" claims. Benchmark numbers appear only in the generated Benchmark section, complete and in both
+  directions, never quoted selectively.
 - **Target:** `SelectPdf.Universal` (current version). The classic `Select.Pdf` library is mentioned only for
   .NET Framework projects.
 - **Licence keys** come from environment variables, never from code: `IRONPDF_LICENSE_KEY` for IronPDF;

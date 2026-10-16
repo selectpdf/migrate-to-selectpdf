@@ -162,6 +162,52 @@ only ([Community Edition](https://selectpdf.com/community-edition/)).
 - **Licence.** Playwright is free (MIT, with the bundled driver under Apache-2.0) with no page or watermark limits;
   SelectPdf is commercial, and its trial adds a banner to every page (see [Licensing](#licensing)).
 
+## Benchmark
+
+<!-- benchmark-pair: generated, do not edit -->
+
+Playwright and SelectPdf on every axis of the [2026-10-15 benchmark run](https://github.com/csharp-pdf/pdf-libraries-compared/blob/main/benchmarks/2026-10-15.md), generated from its raw data (same machine, Windows and Linux; methodology, per-page numbers and every other library are on that page). Lower is better for times and memory, higher for throughput, checks and fidelity.
+
+|  | Playwright | SelectPdf |
+|---|---|---|
+| HTML to PDF, geometric mean of 18 page medians, ms (Windows) | 280 | 212 |
+| Pages converted faster than the other library (Windows) | 6 of 18 | 12 of 18 |
+| Cold start, ms (Windows) | 823 | 714 |
+| Throughput, conversions/min, 1 / 4 / 8 at once, sync (Windows) | 223 / 747 / 1,167 | 353 / 948 / 1,078 |
+| Throughput, conversions/min, 1 / 4 / 8 at once, async (Windows) | 208 / 710 / 1,205 | 323 / 926 / 1,158 |
+| Memory, one page / 8 at once, MB (Windows) | 300 / 797 | 205 / 467 |
+| Memory over 1,000 conversions, MB (Windows) | 276 → 302, 1 failures | 140 → 156, 0 failures |
+| Page that never loads: gives up after, s (Windows) | 30 | 60 |
+| Parallel output equals sequential (Windows) | 32 / 32 | 32 / 32 |
+| HTML to PDF, geometric mean of 18 page medians, ms (Linux) | 108 | 134 |
+| Pages converted faster than the other library (Linux) | 17 of 18 | 1 of 18 |
+| Cold start, ms (Linux) | 771 | 745 |
+| Throughput, conversions/min, 1 / 4 / 8 at once, sync (Linux) | 603 / 1,656 / 2,080 | 619 / 1,929 / 2,597 |
+| Throughput, conversions/min, 1 / 4 / 8 at once, async (Linux) | 524 / 1,797 / 2,490 | 603 / 1,872 / 2,639 |
+| Memory, one page / 8 at once, MB (Linux) | 522 / 849 | 462 / 727 |
+| Memory over 1,000 conversions, MB (Linux) | 435 → 721, 0 failures | 369 → 389, 0 failures |
+| Page that never loads: gives up after, s (Linux) | 30 | 60 |
+| Parallel output equals sequential (Linux) | 32 / 32 | 32 / 32 |
+| Content checks passed (Windows) | 38 / 42 | 46 / 48 |
+| Content checks passed (Linux) | 38 / 42 | 46 / 48 |
+| Fidelity vs Chrome, mean SSIM (Windows) | 0.948 | 0.984 |
+| PDF/A, PDF/UA, PDF/X: levels produced / valid (of 17) | 0 / 0 | 17 / 17 |
+| Tagged structure checks | – | 112 / 112 |
+| Text extraction, lowest F1 | not supported | 0.97 |
+| Search | not supported | supported |
+| PDF to image | not supported | supported |
+| Word to PDF | not supported | supported |
+| Redaction | not supported | supported |
+| Merge | not supported | supported |
+| Split | not supported | supported |
+| Watermark | not supported | supported |
+| Digital signature | not supported | supported |
+| Form filling | not supported | supported |
+| ZUGFeRD / Factur-X | not supported | supported |
+| Docker, minimal image (Linux) | does not run, 123 MB | runs, 270 MB |
+| Docker, vendor-documented image (Linux) | – | not needed (the minimal image runs) |
+| Publish size win-x64 / linux-x64, MB | 103.5 / 134.9 | 477.0 / 449.6 |
+
 ## Deployment
 
 | | Playwright | SelectPdf |
