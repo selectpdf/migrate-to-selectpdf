@@ -25,6 +25,18 @@ your deployment already works: the wrapper is free (LGPL), and the conversions y
 the native library loads on your servers. Note the project's own warning before relying on that: "Do not use
 wkhtmltopdf with any untrusted HTML" ([status](https://wkhtmltopdf.org/status.html)).
 
+## Price and licensing
+
+| | Haukcode.WkHtmlToPdfDotNet / wkhtmltopdf | SelectPdf |
+|---|---|---|
+| Licence | LGPL-3.0-or-later (wrapper), LGPL-3.0 (wkhtmltopdf) ([nuget.org](https://www.nuget.org/packages/Haukcode.WkHtmlToPdfDotNet/1.5.95), [wkhtmltopdf](https://github.com/wkhtmltopdf/wkhtmltopdf)) | Commercial, perpetual ([Pricing](https://selectpdf.com/pricing/), [EULA](https://selectpdf.com/eula/)) |
+| Price | Free | From USD 499 (Single Developer: 1 developer, 1 deployment machine, 1 year of maintenance); one key covers SelectPdf.Universal and the classic library ([Pricing](https://selectpdf.com/pricing/)) |
+| Free use | Open source | Community Edition (`SelectPdf.HtmlToPdf.Universal`): "Free for any use, including production", up to 5 PDF pages per document, HTML to PDF ([Community Edition](https://selectpdf.com/community-edition/)) |
+| Trial | Not applicable | Fully functional, with a "Demo Version" banner on each page until a key is set ([Licensing](https://selectpdf.com/pdf-library/html/License.htm)) |
+| Compatibility packages | Not applicable | `SelectPdf.Compat.WkHtmlToPdfDotNet` and `SelectPdf.Compat.DinkToPdf`: MIT licensed, built on the Community Edition, free for commercial use up to 5 pages per document. The `.Licensed` variants are the same code on SelectPdf.Universal, with no page limit, and need a SelectPdf licence; without a key the output carries a demo watermark ([README](https://github.com/selectpdf/selectpdf-compat-wkhtmltopdf#packages), [.Licensed README](https://github.com/selectpdf/selectpdf-compat-wkhtmltopdf/blob/main/src/SelectPdf.Compat.WkHtmlToPdfDotNet.Licensed/README.md)) |
+
+All licensing pages read on 2026-10-16.
+
 ## Two routes
 
 | | Route 1: compatibility package (`compat/`) | Route 2: the SelectPdf API (`after/`) |
@@ -62,6 +74,8 @@ compatibility package and an engine package instead of Haukcode.WkHtmlToPdfDotNe
 Namespaces `WkHtmlToPdfDotNet` and `WkHtmlToPdfDotNet.Contracts`. No licence key. The package ships `libwkhtmltox`
 for win-x64, win-x86, linux-x64, linux-x86, linux-arm64 and osx-x64
 ([comparison repository](https://github.com/csharp-pdf/pdf-libraries-compared/tree/main/wkhtmltopdf#facts)).
+It renders with Qt WebKit (`libwkhtmltox` 0.12.6); SelectPdf renders with Chromium 154.0.8037.58 (CEF 154; Chromium
+154 stable since 2026-09-22), shipped in its engine package.
 
 **Route 1, compatibility package** ([Sample.csproj](T01-hello-world/compat/Sample.csproj)), with the engine
 package picked by platform as in the
@@ -287,7 +301,7 @@ existing PDFs ([Community Edition](https://selectpdf.com/community-edition/)).
   `NavigationTimeout` (60 seconds in our run) bounds the page load.
 - **Concurrency.** `SynchronizedConverter` runs every conversion on one thread
   ([README](https://github.com/HakanL/WkHtmlToPdf-DotNet#synchronized-converter)). SelectPdf converts several at
-  once, up to `HtmlToPdf.MaximumConcurrentConversions` (default 8,
+  once, up to `HtmlToPdfOptions.MaximumConcurrentConversions` (default 8,
   [reference](https://selectpdf.com/pdf-library/html/P_SelectPdf_Universal_HtmlToPdfOptions_MaximumConcurrentConversions.htm));
   the compatibility package's `SynchronizedConverter` no longer queues conversions on one thread.
 - **Rendering.** Chromium lays pages out like a current browser: layouts that worked around WebKit's missing flexbox
@@ -370,8 +384,9 @@ added for wkhtmltopdf ([README, Docker](https://github.com/selectpdf/selectpdf-c
 Differences to plan for:
 
 - Linux needs glibc 2.30 or later (Debian 11+, Ubuntu 20.04+, RHEL 9+); Alpine (musl) images convert only through
-  the separate remote engine container ([Remote Engine](https://selectpdf.com/pdf-library/html/Remote-Engine.htm)).
-- Base images have no fonts; the built-in fonts cover Latin scripts, and `SelectPdf.Universal.Fonts` adds others
+  the separate remote engine container ([SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.5.0),
+  [Remote Engine](https://selectpdf.com/pdf-library/html/Remote-Engine.htm)).
+- Base images have no fonts; the built-in fonts cover Latin, Greek and Cyrillic, and `SelectPdf.Universal.Fonts` adds others
   ([Deployment with Docker](https://selectpdf.com/pdf-library/html/Deployment-Docker.htm)).
 - Platforms: Windows x64/x86, Linux x64/ARM64, macOS on Apple Silicon. wkhtmltopdf's package also has linux-x86 and
   osx-x64 binaries, which SelectPdf has no engine for
@@ -381,18 +396,6 @@ Differences to plan for:
 
 The `before/`, `after/` and `compat/` projects of T01 to T05 also built and passed their checks on Ubuntu 24.04
 (WSL), with `after/` built for `linux-x64`.
-
-## Licensing
-
-| | Haukcode.WkHtmlToPdfDotNet / wkhtmltopdf | SelectPdf |
-|---|---|---|
-| Licence | LGPL-3.0-or-later (wrapper), LGPL-3.0 (wkhtmltopdf) ([nuget.org](https://www.nuget.org/packages/Haukcode.WkHtmlToPdfDotNet/1.5.95), [wkhtmltopdf](https://github.com/wkhtmltopdf/wkhtmltopdf)) | Commercial, perpetual ([Pricing](https://selectpdf.com/pricing/), [EULA](https://selectpdf.com/eula/)) |
-| Price | Free | From USD 499 (Single Developer: 1 developer, 1 deployment machine, 1 year of maintenance); one key covers SelectPdf.Universal and the classic library ([Pricing](https://selectpdf.com/pricing/)) |
-| Free use | Open source | Community Edition (`SelectPdf.HtmlToPdf.Universal`): "Free for any use, including production", up to 5 PDF pages per document, HTML to PDF ([Community Edition](https://selectpdf.com/community-edition/)) |
-| Trial | Not applicable | Fully functional, with a "Demo Version" banner on each page until a key is set ([Licensing](https://selectpdf.com/pdf-library/html/License.htm)) |
-| Compatibility packages | Not applicable | `SelectPdf.Compat.WkHtmlToPdfDotNet` and `SelectPdf.Compat.DinkToPdf`: MIT licensed, built on the Community Edition, free for commercial use up to 5 pages per document. The `.Licensed` variants are the same code on SelectPdf.Universal, with no page limit, and need a SelectPdf licence; without a key the output carries a demo watermark ([README](https://github.com/selectpdf/selectpdf-compat-wkhtmltopdf#packages), [.Licensed README](https://github.com/selectpdf/selectpdf-compat-wkhtmltopdf/blob/main/src/SelectPdf.Compat.WkHtmlToPdfDotNet.Licensed/README.md)) |
-
-All licensing pages read on 2026-10-16.
 
 ## DinkToPdf
 

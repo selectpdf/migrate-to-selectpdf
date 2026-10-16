@@ -8,13 +8,24 @@ Playwright already runs your end-to-end tests or other automation, when a PDF is
 (clicks, form entries, waiting on application state) that SelectPdf's options cannot express, when you need an
 Intel Mac, or when you want a free MIT/Apache-2.0 tool with no page limit.
 
+## Price and licensing
+
+| | Playwright | SelectPdf |
+|---|---|---|
+| Licence | MIT for the .NET package ([playwright-dotnet LICENSE](https://github.com/microsoft/playwright-dotnet/blob/main/LICENSE)); the Node.js driver bundled in the package is Apache-2.0 ([playwright LICENSE](https://github.com/microsoft/playwright/blob/main/LICENSE)) | Commercial, perpetual ([EULA](https://selectpdf.com/eula/)) |
+| Price | Free | From USD 499 (Single Developer: 1 developer, 1 deployment machine, 1 year of maintenance); OEM licences remove the deployment-machine limit ([Pricing](https://selectpdf.com/pricing/)) |
+| Free use | No limits | 30-day trial, fully functional, with a "Demo Version" banner on every page until a key is set ([Licensing](https://selectpdf.com/pdf-library/html/License.htm)). The separate free Community Edition (`SelectPdf.HtmlToPdf.Universal`) converts HTML to PDF only, up to 5 pages per document ([Community Edition](https://selectpdf.com/community-edition/)) |
+
+Vendor pages read on 2026-10-16.
+
 ## Packages and setup
 
 | | Before: Playwright | After: SelectPdf |
 |---|---|---|
+| HTML engine version | Chromium 153.0.8010.12 for Playwright 1.63.0 (stable since 2026-09-08) | Chromium 154.0.8037.58 (CEF 154; Chromium 154 stable since 2026-09-22), in the engine package |
 | NuGet | `Microsoft.Playwright` 1.63.0 ([nuget.org](https://www.nuget.org/packages/Microsoft.Playwright/1.63.0)) | `SelectPdf.Universal` 26.5.0 plus one engine package, `SelectPdf.Universal.Native.<rid>` (win-x64, win-x86, linux-x64, linux-arm64, osx-arm64), or one per-platform package (`SelectPdf.Universal.Windows`, `.Linux`, `.Linux.Arm64`, `.MacOS`) ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)) |
-| Browser / engine | Not in the package: `playwright.ps1 install chromium` (or `Microsoft.Playwright.Program.Main(["install", "chromium"])` from code) downloads Chromium and the Chromium headless shell to `%USERPROFILE%\AppData\Local\ms-playwright`, `~/.cache/ms-playwright` or `PLAYWRIGHT_BROWSERS_PATH`; each Playwright version needs its own browser build, so the install runs again after an upgrade ([Browsers](https://playwright.dev/dotnet/docs/browsers#managing-browser-binaries)) | The Chromium engine is in the Native package and is restored with the other NuGet packages; there is no install step ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)) |
-| Linux | System packages installed with `install-deps` or `install --with-deps` ([Install system dependencies](https://playwright.dev/dotnet/docs/browsers#install-system-dependencies)) | No OS packages; glibc 2.30 or later ([Deployment with Docker](https://selectpdf.com/pdf-library/html/Deployment-Docker.htm)) |
+| Browser / engine | Not in the package: `playwright.ps1 install chromium` (or `Microsoft.Playwright.Program.Main(["install", "chromium"])` from code) downloads Chromium and the Chromium headless shell to `%USERPROFILE%\AppData\Local\ms-playwright`, `~/.cache/ms-playwright` or `PLAYWRIGHT_BROWSERS_PATH`; each Playwright release updates the browser versions it supports, so after an upgrade the install may have to run again ([Browsers](https://playwright.dev/dotnet/docs/browsers#managing-browser-binaries)) | The Chromium engine is in the Native package and is restored with the other NuGet packages; there is no install step ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)) |
+| Linux | System packages installed with `install-deps` or `install --with-deps` ([Install system dependencies](https://playwright.dev/dotnet/docs/browsers#install-system-dependencies)) | No OS packages; glibc 2.30 or later ([Deployment with Docker](https://selectpdf.com/pdf-library/html/Deployment-Docker.htm), [SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.5.0)) |
 | Licence key | None | None for the trial, which adds a "Demo Version" banner to every page; a purchased key is set in code with `GlobalProperties.LicenseKey` before the first conversion, for example read from an environment variable or your configuration. Keys issued for versions before 26 are refused ([Licensing](https://selectpdf.com/pdf-library/html/License.htm), [comparison page](https://github.com/csharp-pdf/pdf-libraries-compared/tree/main/selectpdf#gotchas)) |
 | Namespace | `Microsoft.Playwright` | `SelectPdf.Universal` |
 
@@ -160,7 +171,7 @@ only ([Community Edition](https://selectpdf.com/community-edition/)).
   ([system requirements](https://playwright.dev/dotnet/docs/intro#system-requirements),
   [Installation](https://selectpdf.com/pdf-library/html/Installation.htm)).
 - **Licence.** Playwright is free (MIT, with the bundled driver under Apache-2.0) with no page or watermark limits;
-  SelectPdf is commercial, and its trial adds a banner to every page (see [Licensing](#licensing)).
+  SelectPdf is commercial, and its trial adds a banner to every page (see [Licensing](#price-and-licensing)).
 
 ## Benchmark
 
@@ -219,13 +230,3 @@ Playwright and SelectPdf on every axis of the [2026-10-15 benchmark run](https:/
 
 Benchmark results for both libraries, including Docker image runs, are on the comparison repository's
 [2026-10-15 results page](https://github.com/csharp-pdf/pdf-libraries-compared/blob/main/benchmarks/2026-10-15.md).
-
-## Licensing
-
-| | Playwright | SelectPdf |
-|---|---|---|
-| Licence | MIT for the .NET package ([playwright-dotnet LICENSE](https://github.com/microsoft/playwright-dotnet/blob/main/LICENSE)); the Node.js driver bundled in the package is Apache-2.0 ([playwright LICENSE](https://github.com/microsoft/playwright/blob/main/LICENSE)) | Commercial, perpetual ([EULA](https://selectpdf.com/eula/)) |
-| Price | Free | From USD 499 (Single Developer: 1 developer, 1 deployment machine, 1 year of maintenance); OEM licences remove the deployment-machine limit ([Pricing](https://selectpdf.com/pricing/)) |
-| Free use | No limits | 30-day trial, fully functional, with a "Demo Version" banner on every page until a key is set ([Licensing](https://selectpdf.com/pdf-library/html/License.htm)). The separate free Community Edition (`SelectPdf.HtmlToPdf.Universal`) converts HTML to PDF only, up to 5 pages per document ([Community Edition](https://selectpdf.com/community-edition/)) |
-
-Vendor pages read on 2026-10-16.

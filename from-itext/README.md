@@ -19,10 +19,22 @@ differences, compare both libraries' rows in the
 [2026-10-15 benchmark](https://github.com/csharp-pdf/pdf-libraries-compared/blob/main/benchmarks/2026-10-15.md),
 for example the [deployment section](https://github.com/csharp-pdf/pdf-libraries-compared/blob/main/benchmarks/2026-10-15.md#deployment).
 
+## Price and licensing
+
+| | iText | SelectPdf |
+|---|---|---|
+| Model | Dual licence: AGPL-3.0, or commercial | Commercial, perpetual, 1 year of maintenance; renewal optional |
+| Free use | AGPL: free of charge; your application's full source must be disclosed under the AGPL, and the iText producer line must be kept in every PDF | 30-day trial with a "Demo Version" banner; free Community Edition for HTML to PDF, at most 5 pages per document |
+| Commercial price | Not published: OEM licences are priced per use case, the volume licence is an annual subscription priced on the number of PDF files processed; 30-day trial | Single Developer, USD 499: 1 developer, 1 deployment machine; OEM licences from USD 799 |
+| Source | [itextpdf.com/how-buy](https://itextpdf.com/how-buy), [AGPLv3 licence](https://itextpdf.com/how-buy/AGPLv3-license), read 2026-10-16 | [selectpdf.com/pricing](https://selectpdf.com/pricing/), read 2026-10-16 |
+
+Check both pages for the current terms before buying; tiers above the entry licence are listed there.
+
 ## Packages and setup
 
 | | iText (before) | SelectPdf (after) |
 |---|---|---|
+| HTML engine | pdfHTML's own HTML and CSS layout; no browser, no JavaScript | Chromium 154.0.8037.58 (CEF 154; Chromium 154 stable since 2026-09-22), in the engine package |
 | NuGet | `itext` + `itext.bouncy-castle-adapter`; `itext.pdfhtml` for HTML | Windows: `SelectPdf.Universal` + `SelectPdf.Universal.Native.win-x64`, or `SelectPdf.Universal.Windows` alone; Linux: `SelectPdf.Universal` + `SelectPdf.Universal.Native.linux-x64`, or `SelectPdf.Universal.Linux` alone |
 | Namespaces | `iText.Kernel.Pdf`, `iText.Layout`, `iText.Html2pdf`, `iText.Forms`, `iText.Signatures`, ... | `SelectPdf.Universal` (plus `SelectPdf.Universal.Drawing` for `RectangleF`, `SizeF`) |
 | Licence | AGPL: no key. Commercial: a JSON licence file loaded with `LicenseKey.LoadLicenseFile` from iText's licensing library | `GlobalProperties.LicenseKey = "..."` before the first conversion; without a key the library runs as a trial and adds a "Demo Version" banner to each page |
@@ -156,7 +168,7 @@ Every pair passes the same `expect.json` checks (`python tools/check_guides.py f
 - **Platforms.** iText is managed code with no native dependencies. SelectPdf needs its native engine package and
   runs on Windows (x64, x86), Linux (x64, ARM64, glibc 2.30 or later) and macOS 13+ on Apple Silicon; on an Intel
   Mac, HTML to PDF, PDF to text and PDF to image are unavailable
-  ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)).
+  ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm), [SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.5.0)).
 - **Source code.** iText is open source under the AGPL
   ([iText Core](https://github.com/itext/itext-dotnet), [pdfHTML](https://github.com/itext/i7n-pdfhtml));
   SelectPdf is closed-source commercial software ([EULA](https://selectpdf.com/eula/)).
@@ -226,17 +238,6 @@ iText and SelectPdf on every axis of the [2026-10-15 benchmark run](https://gith
   [SelectPdf](https://github.com/csharp-pdf/pdf-libraries-compared/tree/main/selectpdf/docker), and the measured
   images in the [benchmark's deployment section](https://github.com/csharp-pdf/pdf-libraries-compared/blob/main/benchmarks/2026-10-15.md#deployment).
 - **Alpine.** SelectPdf needs glibc 2.30 or later, so Alpine (musl) images can only convert through its separate
-  remote engine container ([Remote Engine](https://selectpdf.com/pdf-library/html/Remote-Engine.htm)).
+  remote engine container ([SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.5.0), [Remote Engine](https://selectpdf.com/pdf-library/html/Remote-Engine.htm)).
 - **Windows containers.** SelectPdf needs a Windows Server Core image with the core Windows fonts; Nano Server is
   not supported ([Deployment with Docker](https://selectpdf.com/pdf-library/html/Deployment-Docker.htm)).
-
-## Licensing
-
-| | iText | SelectPdf |
-|---|---|---|
-| Model | Dual licence: AGPL-3.0, or commercial | Commercial, perpetual, 1 year of maintenance; renewal optional |
-| Free use | AGPL: free of charge; your application's full source must be disclosed under the AGPL, and the iText producer line must be kept in every PDF | 30-day trial with a "Demo Version" banner; free Community Edition for HTML to PDF, at most 5 pages per document |
-| Commercial price | Not published: OEM licences are priced per use case, the volume licence is an annual subscription priced on the number of PDF files processed; 30-day trial | Single Developer, USD 499: 1 developer, 1 deployment machine; OEM licences from USD 799 |
-| Source | [itextpdf.com/how-buy](https://itextpdf.com/how-buy), [AGPLv3 licence](https://itextpdf.com/how-buy/AGPLv3-license), read 2026-10-16 | [selectpdf.com/pricing](https://selectpdf.com/pricing/), read 2026-10-16 |
-
-Check both pages for the current terms before buying; tiers above the entry licence are listed there.

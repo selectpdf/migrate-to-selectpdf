@@ -17,10 +17,29 @@ Silicon only), or when IronPDF's measured results suit your workload better: com
 [2026-10-15 benchmark](https://github.com/csharp-pdf/pdf-libraries-compared/blob/main/benchmarks/2026-10-15.md),
 for example [throughput on Windows](https://github.com/csharp-pdf/pdf-libraries-compared/blob/main/benchmarks/2026-10-15.md#throughput).
 
+## Price and licensing
+
+Both sell perpetual licences with one year of updates. Each situation is priced with the cheapest published licence
+that covers it.
+
+| | IronPDF | SelectPdf |
+|---|---|---|
+| 1 developer, internal application | Lite, USD 999 (1 developer, 1 location, 1 project) | Single Developer, USD 499 (1 developer, 1 deployment machine) |
+| 1 developer, SaaS or software sold to customers | Lite + OEM Redistribution add-on, USD 2,998 (999 + 1,999) | Single Developer OEM, USD 799 (unlimited deployment machines) |
+| 5 developers, internal | Professional (up to 10 developers), USD 2,399 (USD 2,999 from 2026-11-01) | 5-Developers (up to 10 deployment machines), USD 799 |
+| Unlimited developers, SaaS or redistributed | Unlimited + OEM Redistribution add-on, USD 6,798 (4,799 + 1,999; USD 7,998 from 2026-11-01) | Enterprise OEM, USD 1,599 |
+| Renewal after the first year (optional) | Support and updates, yearly: USD 599 (Lite), 899 (Plus), 1,799 (Professional), 3,599 (Unlimited); auto-renewal can be cancelled | Maintenance plan, 1, 3 or 5 years |
+| Free use | 30-day trial key | 30-day trial with a "Demo Version" banner; free Community Edition for HTML to PDF, at most 5 pages per document |
+| Source | [ironpdf.com/licensing](https://ironpdf.com/licensing/), read 2026-10-16 | [selectpdf.com/pricing](https://selectpdf.com/pricing/), read 2026-10-16 |
+
+Iron Software announces that its Professional and Unlimited prices rise to USD 2,999 and USD 5,999 on
+2026-11-01. Check both pages for the current terms before buying.
+
 ## Packages and setup
 
 | | IronPDF (before) | SelectPdf (after) |
 |---|---|---|
+| HTML engine version | Chromium 109.0.5414.120 (CEF 109.1.18, in `IronPdf.Native.Chrome.*` 2026.10.6; Chromium 109 stable since 2023-01-10) | Chromium 154.0.8037.58 (CEF 154; Chromium 154 stable since 2026-09-22), in the engine package |
 | NuGet, Windows | `IronPdf` | `SelectPdf.Universal` + `SelectPdf.Universal.Native.win-x64`, or `SelectPdf.Universal.Windows` alone |
 | NuGet, Linux and Docker | `IronPdf.Linux` | `SelectPdf.Universal` + `SelectPdf.Universal.Native.linux-x64`, or `SelectPdf.Universal.Linux` alone |
 | Namespace | `IronPdf` (plus `IronPdf.Rendering`, `IronPdf.Signing`, `IronPdf.Imaging`) | `SelectPdf.Universal` (plus `SelectPdf.Universal.Drawing` for `RectangleF`, `SizeF`) |
@@ -147,7 +166,7 @@ Every pair passes the same `expect.json` checks (`python tools/check_guides.py f
   Compare a few real documents side by side before switching.
 - **Platforms.** SelectPdf runs on Windows (x64, x86), Linux (x64, ARM64, glibc 2.30 or later) and macOS 13+ on
   Apple Silicon; on an Intel Mac, HTML to PDF, PDF to text and PDF to image are unavailable
-  ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)). IronPDF lists Windows, macOS and
+  ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm), [SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.5.0)). IronPDF lists Windows, macOS and
   Linux ([NuGet](https://www.nuget.org/packages/IronPdf/2026.10.3)).
 - **Commercial-only features.** SelectPdf's free Community Edition (`SelectPdf.HtmlToPdf.Universal`) is HTML to PDF
   only, at most 5 pages per document. Every other task in this guide (merge, stamps, forms, text extraction,
@@ -207,7 +226,7 @@ IronPDF and SelectPdf on every axis of the [2026-10-15 benchmark run](https://gi
   Native package per build, chosen by runtime identifier
   ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)).
 - **Linux and Docker.** IronPDF's Docker guide installs a list of Chromium dependencies with `apt-get` and sets
-  `LinuxAndDockerDependenciesAutoConfig = false` and `ChromeGpuMode = Disabled`
+  `LinuxAndDockerDependenciesAutoConfig = false` (GPU acceleration is off by default)
   ([guide](https://ironpdf.com/get-started/ironpdf-docker/)). SelectPdf's Docker guide uses the official
   Debian and Ubuntu based .NET images with no `apt-get` step, publishing with `-r linux-x64`; base images have no
   fonts, and `SelectPdf.Universal.Fonts` adds Noto fonts for scripts beyond Latin, Greek and Cyrillic
@@ -220,15 +239,3 @@ IronPDF and SelectPdf on every axis of the [2026-10-15 benchmark run](https://gi
   ([Remote Engine](https://selectpdf.com/pdf-library/html/Remote-Engine.htm)).
 - **Windows containers.** SelectPdf needs a Windows Server Core image with the core Windows fonts; Nano Server is
   not supported ([Deployment with Docker](https://selectpdf.com/pdf-library/html/Deployment-Docker.htm)).
-
-## Licensing
-
-| | IronPDF | SelectPdf |
-|---|---|---|
-| Model | Commercial, perpetual, 1 year of support and updates | Commercial, perpetual, 1 year of maintenance; renewal optional |
-| Entry licence | Lite, USD 999: 1 developer, 1 location, 1 project | Single Developer, USD 499: 1 developer, 1 deployment machine |
-| Redistribution | Royalty-free redistribution (SaaS, OEM) at extra cost on the lower tiers | OEM licences (from USD 799) for unlimited deployment machines and distribution |
-| Free use | 30-day trial key | 30-day trial with a "Demo Version" banner; free Community Edition for HTML to PDF, at most 5 pages per document |
-| Source | [ironpdf.com/licensing](https://ironpdf.com/licensing/), read 2026-10-16 | [selectpdf.com/pricing](https://selectpdf.com/pricing/), read 2026-10-16 |
-
-Check both pages for the current terms before buying; tiers above the entry licence are listed there.

@@ -8,13 +8,24 @@ when the same browser also runs tests, scraping or other automation, when a PDF 
 (clicks, form entries, waiting on application state) that SelectPdf's options cannot express, when you need Firefox
 or an Intel Mac, or when you want a free MIT-licensed tool with no page limit.
 
+## Price and licensing
+
+| | PuppeteerSharp | SelectPdf |
+|---|---|---|
+| Licence | MIT ([LICENSE](https://github.com/hardkoded/puppeteer-sharp/blob/master/LICENSE)). The downloaded browser is Google's Chrome for Testing build, which the package's MIT licence does not cover ([Chrome for Testing](https://developer.chrome.com/blog/chrome-for-testing)) | Commercial, perpetual ([EULA](https://selectpdf.com/eula/)) |
+| Price | Free | From USD 499 (Single Developer: 1 developer, 1 deployment machine, 1 year of maintenance); OEM licences remove the deployment-machine limit ([Pricing](https://selectpdf.com/pricing/)) |
+| Free use | No limits | 30-day trial, fully functional, with a "Demo Version" banner on every page until a key is set ([Licensing](https://selectpdf.com/pdf-library/html/License.htm)). The separate free Community Edition (`SelectPdf.HtmlToPdf.Universal`) converts HTML to PDF only, up to 5 pages per document ([Community Edition](https://selectpdf.com/community-edition/)) |
+
+Vendor pages read on 2026-10-16.
+
 ## Packages and setup
 
 | | Before: PuppeteerSharp | After: SelectPdf |
 |---|---|---|
+| HTML engine version | Chrome for Testing 154.0.8037.57 for PuppeteerSharp 25.13.1 (stable since 2026-09-22) | Chromium 154.0.8037.58 (CEF 154; Chromium 154 stable since 2026-09-22), in the engine package |
 | NuGet | `PuppeteerSharp` 25.13.1 ([nuget.org](https://www.nuget.org/packages/PuppeteerSharp/25.13.1)) | `SelectPdf.Universal` 26.5.0 plus one engine package, `SelectPdf.Universal.Native.<rid>` (win-x64, win-x86, linux-x64, linux-arm64, osx-arm64), or one per-platform package (`SelectPdf.Universal.Windows`, `.Linux`, `.Linux.Arm64`, `.MacOS`) ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)) |
 | Browser / engine | Not in the package: `BrowserFetcher.DownloadAsync()` downloads Chrome for Testing (and Chrome Headless Shell) into the application folder at run time, about 435 MB plus 273 MB per folder on Windows x64 ([README](https://github.com/hardkoded/puppeteer-sharp#generate-pdf-files), [comparison page](https://github.com/csharp-pdf/pdf-libraries-compared/tree/main/puppeteersharp#gotchas)) | The Chromium engine is in the Native package and is restored with the other NuGet packages; there is no download step ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)) |
-| Linux | The Debian/Ubuntu libraries listed in Puppeteer's [troubleshooting guide](https://pptr.dev/troubleshooting#chrome-doesnt-launch-on-linux) | No OS packages; glibc 2.30 or later ([Deployment with Docker](https://selectpdf.com/pdf-library/html/Deployment-Docker.htm)) |
+| Linux | The Debian/Ubuntu libraries listed in Puppeteer's [troubleshooting guide](https://pptr.dev/troubleshooting#chrome-doesnt-launch-on-linux) | No OS packages; glibc 2.30 or later ([Deployment with Docker](https://selectpdf.com/pdf-library/html/Deployment-Docker.htm), [SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.5.0)) |
 | Licence key | None | None for the trial, which adds a "Demo Version" banner to every page; a purchased key is set in code with `GlobalProperties.LicenseKey` before the first conversion, for example read from an environment variable or your configuration. Keys issued for versions before 26 are refused ([Licensing](https://selectpdf.com/pdf-library/html/License.htm), [comparison page](https://github.com/csharp-pdf/pdf-libraries-compared/tree/main/selectpdf#gotchas)) |
 | Namespace | `PuppeteerSharp`, `PuppeteerSharp.Media` | `SelectPdf.Universal` |
 
@@ -158,7 +169,7 @@ only ([Community Edition](https://selectpdf.com/community-edition/)).
   bundled Chromium and supports macOS on Apple Silicon only
   ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)).
 - **Licence.** PuppeteerSharp is free under MIT with no page or watermark limits; SelectPdf is commercial, and its
-  trial adds a banner to every page (see [Licensing](#licensing)).
+  trial adds a banner to every page (see [Licensing](#price-and-licensing)).
 
 ## Benchmark
 
@@ -217,13 +228,3 @@ PuppeteerSharp and SelectPdf on every axis of the [2026-10-15 benchmark run](htt
 
 Benchmark results for both libraries, including Docker image runs, are on the comparison repository's
 [2026-10-15 results page](https://github.com/csharp-pdf/pdf-libraries-compared/blob/main/benchmarks/2026-10-15.md).
-
-## Licensing
-
-| | PuppeteerSharp | SelectPdf |
-|---|---|---|
-| Licence | MIT ([LICENSE](https://github.com/hardkoded/puppeteer-sharp/blob/master/LICENSE)). The downloaded browser is Google's Chrome for Testing build, which the package's MIT licence does not cover ([Chrome for Testing](https://developer.chrome.com/blog/chrome-for-testing)) | Commercial, perpetual ([EULA](https://selectpdf.com/eula/)) |
-| Price | Free | From USD 499 (Single Developer: 1 developer, 1 deployment machine, 1 year of maintenance); OEM licences remove the deployment-machine limit ([Pricing](https://selectpdf.com/pricing/)) |
-| Free use | No limits | 30-day trial, fully functional, with a "Demo Version" banner on every page until a key is set ([Licensing](https://selectpdf.com/pdf-library/html/License.htm)). The separate free Community Edition (`SelectPdf.HtmlToPdf.Universal`) converts HTML to PDF only, up to 5 pages per document ([Community Edition](https://selectpdf.com/community-edition/)) |
-
-Vendor pages read on 2026-10-16.

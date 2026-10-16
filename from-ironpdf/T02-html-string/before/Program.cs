@@ -8,8 +8,8 @@ var output = args.Length > 0 ? args[0] : "output.pdf";
 // IronPDF reads its licence key from License.LicenseKey (a free trial key works)
 License.LicenseKey = Environment.GetEnvironmentVariable("IRONPDF_LICENSE_KEY");
 
-// The two settings IronPDF's Docker guide gives with its apt-get package list: the Dockerfile installs the
-// dependencies, so the automatic configuration is off, and GPU acceleration is disabled.
+// IronPDF's Docker guide turns the automatic dependency configuration off when the Dockerfile installs the
+// dependencies with apt-get. GPU acceleration is disabled by default (the guide); the second line keeps it that way.
 Installation.LinuxAndDockerDependenciesAutoConfig = false;
 Installation.ChromeGpuMode = IronPdf.Engines.Chrome.ChromeGpuModes.Disabled;
 

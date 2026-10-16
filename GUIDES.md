@@ -28,21 +28,21 @@ the `before/` route — and both must pass the same `expect.json` checks.
 ## The guide (README.md)
 
 1. **Who it is for** — one or two sentences: which projects this helps, and when staying is the better choice.
-2. **Packages and setup** — before and after: NuGet packages, licence keys, the namespace.
-3. **Mapping** — a table from the library's types, methods and settings to SelectPdf's, with units (points,
+2. **Price and licensing** — prices side by side for common situations (one developer, SaaS or redistribution, a team, unlimited), and both licence models, each linked to the vendor's page with the date read.
+3. **Packages and setup** — before and after: NuGet packages, licence keys, the namespace.
+4. **Mapping** — a table from the library's types, methods and settings to SelectPdf's, with units (points,
    millimetres, pixels) stated where they differ.
-4. **Task by task** — for each task folder: two or three sentences on what changed, linking `before/` and
+5. **Task by task** — for each task folder: two or three sentences on what changed, linking `before/` and
    `after/`.
-5. **What you can add** — tasks SelectPdf supports and the library does not, linked to SelectPdf's samples.
-6. **What does not carry over** — options without an equivalent, behaviour that differs (defaults, units,
+6. **What you can add** — tasks SelectPdf supports and the library does not, linked to SelectPdf's samples.
+7. **What does not carry over** — options without an equivalent, behaviour that differs (defaults, units,
    timeouts, page-number placeholders), and the workaround where there is one. Honest and specific.
-7. **Benchmark** — the library and SelectPdf side by side on every axis of the latest benchmark run (speed,
+8. **Benchmark** — the library and SelectPdf side by side on every axis of the latest benchmark run (speed,
    throughput, memory, checks, fidelity, standards, tools, Docker), generated from the raw data by
    [`analysis/pair_sections.py`](https://github.com/csharp-pdf/pdf-benchmarks/blob/main/analysis/pair_sections.py)
    in pdf-benchmarks. The section is replaced on every run and never edited by hand.
-8. **Deployment** — Windows, Linux and Docker differences, linking both libraries' Docker samples in the
+9. **Deployment** — Windows, Linux and Docker differences, linking both libraries' Docker samples in the
    comparison repository.
-9. **Licensing** — both licence models side by side, each linked to the vendor's page with the date read.
 
 ## Rules
 
