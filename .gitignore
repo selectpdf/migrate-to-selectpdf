@@ -1,0 +1,12 @@
+bin/
+obj/
+.vs/
+*.user
+# generated output
+*.pdf
+*.png
+!_inputs/*.pdf
+# never commit licence keys
+*.lic
+# browsers downloaded at run time
+.local-chromium/

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- IronPdf on Windows, IronPdf.Linux on Linux and in Docker
+         (https://ironpdf.com/get-started/ironpdf-docker/). -->
+    <PackageReference Include="IronPdf" Version="2026.10.3" Condition="!$([MSBuild]::IsOSPlatform('Linux'))" />
+    <PackageReference Include="IronPdf.Linux" Version="2026.10.3" Condition="$([MSBuild]::IsOSPlatform('Linux'))" />
+  </ItemGroup>
+</Project>

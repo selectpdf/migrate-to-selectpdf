@@ -1,0 +1,4 @@
+{
+  "outputs": [ { "file": "output.pdf", "pages": 1, "text": ["This domain is for use in documentation examples"] } ],
+  "notes": "https://example.com/ now shows 'Example Domain' only in its <title>, not in the page body, so the check uses the body text."
+}

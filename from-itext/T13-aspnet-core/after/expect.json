@@ -1,0 +1,1 @@
+{ "web": { "path": "/report" }, "outputs": [ { "file": "output.pdf", "text": ["Quarterly report", "Alpha", "Beta", "Gamma"] } ] }

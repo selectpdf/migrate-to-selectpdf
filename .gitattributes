@@ -1,0 +1,12 @@
+# Run inside Linux (Docker): keep LF even on a Windows checkout with core.autocrlf
+*.sh text eol=lf
+Dockerfile text eol=lf
+*Dockerfile* text eol=lf
+# Binary inputs: never convert line endings (a PDF's byte offsets break)
+*.pdf binary
+*.png binary
+*.jpg binary
+*.icc binary
+*.woff2 binary
+*.ttf binary
+*.docx binary

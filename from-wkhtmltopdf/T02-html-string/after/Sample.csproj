@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- The managed library plus one native engine package chosen by runtime identifier, as in SelectPdf's
+         "Publishing for Several Platforms" setup (https://selectpdf.com/pdf-library/html/Installation.htm).
+         A build without a runtime identifier gets the win-x64 engine; publish with -r linux-x64 for Linux. -->
+    <PackageReference Include="SelectPdf.Universal" Version="26.5.0" />
+    <PackageReference Include="SelectPdf.Universal.Native.win-x64" Version="26.5.0"
+                      Condition="'$(RuntimeIdentifier)' == 'win-x64' Or '$(RuntimeIdentifier)' == ''" />
+    <PackageReference Include="SelectPdf.Universal.Native.linux-x64" Version="26.5.0"
+                      Condition="'$(RuntimeIdentifier)' == 'linux-x64'" />
+  </ItemGroup>
+</Project>
