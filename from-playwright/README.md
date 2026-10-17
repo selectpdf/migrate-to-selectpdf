@@ -187,7 +187,7 @@ Playwright and SelectPdf on every axis of the [2026-10-15 benchmark run](https:/
 | Throughput, conversions/min, 1 / 4 / 8 at once, sync (Windows) | 223 / 747 / 1,167 | 353 / 948 / 1,078 |
 | Throughput, conversions/min, 1 / 4 / 8 at once, async (Windows) | 208 / 710 / 1,205 | 323 / 926 / 1,158 |
 | Memory, one page / 8 at once, MB (Windows) | 300 / 797 | 205 / 467 |
-| Memory over 1,000 conversions, MB (Windows) | 276 → 302, 1 failures | 140 → 156, 0 failures |
+| Memory over 1,000 conversions, MB (Windows) | 276 → 302, 1 failure | 140 → 156, 0 failures |
 | Page that never loads: gives up after, s (Windows) | 30 | 60 |
 | Parallel output equals sequential (Windows) | 32 / 32 | 32 / 32 |
 | HTML to PDF, geometric mean of 18 page medians, ms (Linux) | 108 | 134 |
