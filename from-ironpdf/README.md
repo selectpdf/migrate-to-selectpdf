@@ -25,12 +25,12 @@ that covers it.
 | | IronPDF | SelectPdf |
 |---|---|---|
 | 1 developer, internal application | Lite, USD 999 (1 developer, 1 location, 1 project) | Single Developer, USD 499 (1 developer, 1 deployment machine) |
-| 1 developer, SaaS or software sold to customers | Lite + OEM Redistribution add-on, USD 2,998 (999 + 1,999) | Single Developer OEM, USD 799 (unlimited deployment machines) |
+| 1 developer, SaaS or software sold to customers | Plus (3 developers) + OEM Redistribution add-on, USD 3,498 (1,499 + 1,999); the add-on is not offered with Lite | Single Developer OEM, USD 799 (unlimited deployment machines) |
 | 5 developers, internal | Professional (up to 10 developers), USD 2,399 (USD 2,999 from 2026-11-01) | 5-Developers (up to 10 deployment machines), USD 799 |
 | Unlimited developers, SaaS or redistributed | Unlimited + OEM Redistribution add-on, USD 6,798 (4,799 + 1,999; USD 7,998 from 2026-11-01) | Enterprise OEM, USD 1,599 |
 | Renewal after the first year (optional) | Support and updates, yearly: USD 599 (Lite), 899 (Plus), 1,799 (Professional), 3,599 (Unlimited); auto-renewal can be cancelled | Maintenance plan, 1, 3 or 5 years |
 | Free use | 30-day trial key | 30-day trial with a "Demo Version" banner; free Community Edition for HTML to PDF, at most 5 pages per document |
-| Source | [ironpdf.com/licensing](https://ironpdf.com/licensing/), read 2026-10-16 | [selectpdf.com/pricing](https://selectpdf.com/pricing/), read 2026-10-16 |
+| Source | [ironpdf.com/licensing](https://ironpdf.com/licensing/), read 2026-10-22 | [selectpdf.com/pricing](https://selectpdf.com/pricing/), read 2026-10-16 |
 
 Iron Software announces that its Professional and Unlimited prices rise to USD 2,999 and USD 5,999 on
 2026-11-01. Check both pages for the current terms before buying.
