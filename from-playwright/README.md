@@ -3,7 +3,7 @@
 ## Who it is for
 
 .NET projects that launch Chromium with Playwright only to print HTML or a URL to PDF with `page.PdfAsync`, and
-want to make PDFs with `SelectPdf.Universal` 26.5.0 instead. Staying with Playwright is the better choice when
+want to make PDFs with `SelectPdf.Universal` 26.6.0 instead. Staying with Playwright is the better choice when
 Playwright already runs your end-to-end tests or other automation, when a PDF is printed after a scripted session
 (clicks, form entries, waiting on application state) that SelectPdf's options cannot express, when you need an
 Intel Mac, or when you want a free MIT/Apache-2.0 tool with no page limit.
@@ -23,9 +23,9 @@ Vendor pages read on 2026-10-16.
 | | Before: Playwright | After: SelectPdf |
 |---|---|---|
 | HTML engine version | Chromium 153.0.8010.12 for Playwright 1.63.0 (stable since 2026-09-08) | Chromium 154.0.8037.58 (CEF 154; Chromium 154 stable since 2026-09-22), in the engine package |
-| NuGet | `Microsoft.Playwright` 1.63.0 ([nuget.org](https://www.nuget.org/packages/Microsoft.Playwright/1.63.0)) | `SelectPdf.Universal` 26.5.0 plus one engine package, `SelectPdf.Universal.Native.<rid>` (win-x64, win-x86, linux-x64, linux-arm64, osx-arm64), or one per-platform package (`SelectPdf.Universal.Windows`, `.Linux`, `.Linux.Arm64`, `.MacOS`) ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)) |
+| NuGet | `Microsoft.Playwright` 1.63.0 ([nuget.org](https://www.nuget.org/packages/Microsoft.Playwright/1.63.0)) | `SelectPdf.Universal` 26.6.0 plus one engine package, `SelectPdf.Universal.Native.<rid>` (win-x64, win-x86, linux-x64, linux-arm64, osx-arm64), or one per-platform package (`SelectPdf.Universal.Windows`, `.Linux`, `.Linux.Arm64`, `.MacOS`) ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)) |
 | Browser / engine | Not in the package: `playwright.ps1 install chromium` (or `Microsoft.Playwright.Program.Main(["install", "chromium"])` from code) downloads Chromium and the Chromium headless shell to `%USERPROFILE%\AppData\Local\ms-playwright`, `~/.cache/ms-playwright` or `PLAYWRIGHT_BROWSERS_PATH`; each Playwright release updates the browser versions it supports, so after an upgrade the install may have to run again ([Browsers](https://playwright.dev/dotnet/docs/browsers#managing-browser-binaries)) | The Chromium engine is in the Native package and is restored with the other NuGet packages; there is no install step ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)) |
-| Linux | System packages installed with `install-deps` or `install --with-deps` ([Install system dependencies](https://playwright.dev/dotnet/docs/browsers#install-system-dependencies)) | No OS packages; glibc 2.30 or later ([Deployment with Docker](https://selectpdf.com/pdf-library/html/Deployment-Docker.htm), [SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.5.0)) |
+| Linux | System packages installed with `install-deps` or `install --with-deps` ([Install system dependencies](https://playwright.dev/dotnet/docs/browsers#install-system-dependencies)) | No OS packages; glibc 2.30 or later ([Deployment with Docker](https://selectpdf.com/pdf-library/html/Deployment-Docker.htm), [SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.6.0)) |
 | Licence key | None | None for the trial, which adds a "Demo Version" banner to every page; a purchased key is set in code with `GlobalProperties.LicenseKey` before the first conversion, for example read from an environment variable or your configuration. Keys issued for versions before 26 are refused ([Licensing](https://selectpdf.com/pdf-library/html/License.htm), [comparison page](https://github.com/csharp-pdf/pdf-libraries-compared/tree/main/selectpdf#gotchas)) |
 | Namespace | `Microsoft.Playwright` | `SelectPdf.Universal` |
 

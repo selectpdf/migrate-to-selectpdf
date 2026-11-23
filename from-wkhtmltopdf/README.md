@@ -1,7 +1,7 @@
 # From wkhtmltopdf (Haukcode.WkHtmlToPdfDotNet, DinkToPdf) to SelectPdf
 
 Runnable projects for moving a .NET application from a wkhtmltopdf wrapper to
-[SelectPdf.Universal](https://www.nuget.org/packages/SelectPdf.Universal/26.5.0) 26.5.0. The `before/` projects use
+[SelectPdf.Universal](https://www.nuget.org/packages/SelectPdf.Universal/26.6.0) 26.6.0. The `before/` projects use
 [Haukcode.WkHtmlToPdfDotNet](https://www.nuget.org/packages/Haukcode.WkHtmlToPdfDotNet/1.5.95) 1.5.95; DinkToPdf
 has the same settings classes and is covered in [DinkToPdf](#dinktopdf).
 
@@ -90,12 +90,12 @@ package picked by platform as in the
 </PropertyGroup>
 <ItemGroup>
   <PackageReference Include="SelectPdf.Compat.WkHtmlToPdfDotNet" Version="1.0.0" />
-  <PackageReference Include="SelectPdf.Universal.Native.$(SelectPdfRid)" Version="26.5.0" />
+  <PackageReference Include="SelectPdf.Universal.Native.$(SelectPdfRid)" Version="26.6.0" />
 </ItemGroup>
 ```
 
 Namespaces unchanged (`WkHtmlToPdfDotNet`). The free package depends on
-[SelectPdf.HtmlToPdf.Universal](https://www.nuget.org/packages/SelectPdf.HtmlToPdf.Universal/26.5.0) 26.5.0 (the
+[SelectPdf.HtmlToPdf.Universal](https://www.nuget.org/packages/SelectPdf.HtmlToPdf.Universal/26.6.0) 26.6.0 (the
 Community Edition) and needs no licence key. The engine packages are `SelectPdf.Universal.Native.<rid>` for
 `win-x64`, `win-x86`, `linux-x64`, `linux-arm64` and `osx-arm64`; reference one per build, because they all install
 into the same folder ([README](https://github.com/selectpdf/selectpdf-compat-wkhtmltopdf#quick-start)). Delete the
@@ -104,10 +104,10 @@ into the same folder ([README](https://github.com/selectpdf/selectpdf-compat-wkh
 **Route 2, SelectPdf API** ([Sample.csproj](T01-hello-world/after/Sample.csproj)):
 
 ```xml
-<PackageReference Include="SelectPdf.Universal" Version="26.5.0" />
-<PackageReference Include="SelectPdf.Universal.Native.win-x64" Version="26.5.0"
+<PackageReference Include="SelectPdf.Universal" Version="26.6.0" />
+<PackageReference Include="SelectPdf.Universal.Native.win-x64" Version="26.6.0"
                   Condition="'$(RuntimeIdentifier)' == 'win-x64' Or '$(RuntimeIdentifier)' == ''" />
-<PackageReference Include="SelectPdf.Universal.Native.linux-x64" Version="26.5.0"
+<PackageReference Include="SelectPdf.Universal.Native.linux-x64" Version="26.6.0"
                   Condition="'$(RuntimeIdentifier)' == 'linux-x64'" />
 ```
 
@@ -384,7 +384,7 @@ added for wkhtmltopdf ([README, Docker](https://github.com/selectpdf/selectpdf-c
 Differences to plan for:
 
 - Linux needs glibc 2.30 or later (Debian 11+, Ubuntu 20.04+, RHEL 9+); Alpine (musl) images convert only through
-  the separate remote engine container ([SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.5.0),
+  the separate remote engine container ([SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.6.0),
   [Remote Engine](https://selectpdf.com/pdf-library/html/Remote-Engine.htm)).
 - Base images have no fonts; the built-in fonts cover Latin, Greek and Cyrillic, and `SelectPdf.Universal.Fonts` adds others
   ([Deployment with Docker](https://selectpdf.com/pdf-library/html/Deployment-Docker.htm)).

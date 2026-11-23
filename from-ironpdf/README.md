@@ -1,7 +1,7 @@
 # From IronPDF to SelectPdf
 
 Before-and-after projects for moving a .NET application from [IronPDF](https://ironpdf.com/) (`IronPdf`
-2026.10.3) to [SelectPdf](https://selectpdf.com/pdf-library/) (`SelectPdf.Universal` 26.5.0).
+2026.10.3) to [SelectPdf](https://selectpdf.com/pdf-library/) (`SelectPdf.Universal` 26.6.0).
 
 ## Who it is for
 
@@ -166,7 +166,7 @@ Every pair passes the same `expect.json` checks (`python tools/check_guides.py f
   Compare a few real documents side by side before switching.
 - **Platforms.** SelectPdf runs on Windows (x64, x86), Linux (x64, ARM64, glibc 2.30 or later) and macOS 13+ on
   Apple Silicon; on an Intel Mac, HTML to PDF, PDF to text and PDF to image are unavailable
-  ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm), [SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.5.0)). IronPDF lists Windows, macOS and
+  ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm), [SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.6.0)). IronPDF lists Windows, macOS and
   Linux ([NuGet](https://www.nuget.org/packages/IronPdf/2026.10.3)).
 - **Commercial-only features.** SelectPdf's free Community Edition (`SelectPdf.HtmlToPdf.Universal`) is HTML to PDF
   only, at most 5 pages per document. Every other task in this guide (merge, stamps, forms, text extraction,

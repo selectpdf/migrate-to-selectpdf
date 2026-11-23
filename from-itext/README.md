@@ -2,7 +2,7 @@
 
 Before-and-after projects for moving a .NET application from [iText](https://itextpdf.com/) (`itext` 9.8.0 with
 the pdfHTML add-on, `itext.pdfhtml` 6.3.4) to [SelectPdf](https://selectpdf.com/pdf-library/)
-(`SelectPdf.Universal` 26.5.0).
+(`SelectPdf.Universal` 26.6.0).
 
 ## Who it is for
 
@@ -168,7 +168,7 @@ Every pair passes the same `expect.json` checks (`python tools/check_guides.py f
 - **Platforms.** iText is managed code with no native dependencies. SelectPdf needs its native engine package and
   runs on Windows (x64, x86), Linux (x64, ARM64, glibc 2.30 or later) and macOS 13+ on Apple Silicon; on an Intel
   Mac, HTML to PDF, PDF to text and PDF to image are unavailable
-  ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm), [SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.5.0)).
+  ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm), [SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.6.0)).
 - **Source code.** iText is open source under the AGPL
   ([iText Core](https://github.com/itext/itext-dotnet), [pdfHTML](https://github.com/itext/i7n-pdfhtml));
   SelectPdf is closed-source commercial software ([EULA](https://selectpdf.com/eula/)).
@@ -238,6 +238,6 @@ iText and SelectPdf on every axis of the [2026-10-15 benchmark run](https://gith
   [SelectPdf](https://github.com/csharp-pdf/pdf-libraries-compared/tree/main/selectpdf/docker), and the measured
   images in the [benchmark's deployment section](https://github.com/csharp-pdf/pdf-libraries-compared/blob/main/benchmarks/2026-10-15.md#deployment).
 - **Alpine.** SelectPdf needs glibc 2.30 or later, so Alpine (musl) images can only convert through its separate
-  remote engine container ([SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.5.0), [Remote Engine](https://selectpdf.com/pdf-library/html/Remote-Engine.htm)).
+  remote engine container ([SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.6.0), [Remote Engine](https://selectpdf.com/pdf-library/html/Remote-Engine.htm)).
 - **Windows containers.** SelectPdf needs a Windows Server Core image with the core Windows fonts; Nano Server is
   not supported ([Deployment with Docker](https://selectpdf.com/pdf-library/html/Deployment-Docker.htm)).

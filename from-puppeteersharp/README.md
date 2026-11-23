@@ -3,7 +3,7 @@
 ## Who it is for
 
 .NET projects that start a browser with PuppeteerSharp only to print HTML or a URL to PDF with `page.PdfAsync`,
-and want to make PDFs with `SelectPdf.Universal` 26.5.0 instead. Staying with PuppeteerSharp is the better choice
+and want to make PDFs with `SelectPdf.Universal` 26.6.0 instead. Staying with PuppeteerSharp is the better choice
 when the same browser also runs tests, scraping or other automation, when a PDF is printed after a scripted session
 (clicks, form entries, waiting on application state) that SelectPdf's options cannot express, when you need Firefox
 or an Intel Mac, or when you want a free MIT-licensed tool with no page limit.
@@ -23,9 +23,9 @@ Vendor pages read on 2026-10-16.
 | | Before: PuppeteerSharp | After: SelectPdf |
 |---|---|---|
 | HTML engine version | Chrome for Testing 154.0.8037.57 for PuppeteerSharp 25.13.1 (stable since 2026-09-22) | Chromium 154.0.8037.58 (CEF 154; Chromium 154 stable since 2026-09-22), in the engine package |
-| NuGet | `PuppeteerSharp` 25.13.1 ([nuget.org](https://www.nuget.org/packages/PuppeteerSharp/25.13.1)) | `SelectPdf.Universal` 26.5.0 plus one engine package, `SelectPdf.Universal.Native.<rid>` (win-x64, win-x86, linux-x64, linux-arm64, osx-arm64), or one per-platform package (`SelectPdf.Universal.Windows`, `.Linux`, `.Linux.Arm64`, `.MacOS`) ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)) |
+| NuGet | `PuppeteerSharp` 25.13.1 ([nuget.org](https://www.nuget.org/packages/PuppeteerSharp/25.13.1)) | `SelectPdf.Universal` 26.6.0 plus one engine package, `SelectPdf.Universal.Native.<rid>` (win-x64, win-x86, linux-x64, linux-arm64, osx-arm64), or one per-platform package (`SelectPdf.Universal.Windows`, `.Linux`, `.Linux.Arm64`, `.MacOS`) ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)) |
 | Browser / engine | Not in the package: `BrowserFetcher.DownloadAsync()` downloads Chrome for Testing (and Chrome Headless Shell) into the application folder at run time, about 435 MB plus 273 MB per folder on Windows x64 ([README](https://github.com/hardkoded/puppeteer-sharp#generate-pdf-files), [comparison page](https://github.com/csharp-pdf/pdf-libraries-compared/tree/main/puppeteersharp#gotchas)) | The Chromium engine is in the Native package and is restored with the other NuGet packages; there is no download step ([Installation](https://selectpdf.com/pdf-library/html/Installation.htm)) |
-| Linux | The Debian/Ubuntu libraries listed in Puppeteer's [troubleshooting guide](https://pptr.dev/troubleshooting#chrome-doesnt-launch-on-linux) | No OS packages; glibc 2.30 or later ([Deployment with Docker](https://selectpdf.com/pdf-library/html/Deployment-Docker.htm), [SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.5.0)) |
+| Linux | The Debian/Ubuntu libraries listed in Puppeteer's [troubleshooting guide](https://pptr.dev/troubleshooting#chrome-doesnt-launch-on-linux) | No OS packages; glibc 2.30 or later ([Deployment with Docker](https://selectpdf.com/pdf-library/html/Deployment-Docker.htm), [SelectPdf.Universal.Linux on NuGet](https://www.nuget.org/packages/SelectPdf.Universal.Linux/26.6.0)) |
 | Licence key | None | None for the trial, which adds a "Demo Version" banner to every page; a purchased key is set in code with `GlobalProperties.LicenseKey` before the first conversion, for example read from an environment variable or your configuration. Keys issued for versions before 26 are refused ([Licensing](https://selectpdf.com/pdf-library/html/License.htm), [comparison page](https://github.com/csharp-pdf/pdf-libraries-compared/tree/main/selectpdf#gotchas)) |
 | Namespace | `PuppeteerSharp`, `PuppeteerSharp.Media` | `SelectPdf.Universal` |
 
